@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DARTS | しー</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ↓ここから下、index.html とほぼ同じコピーです。
+     ページが増えるとこの重複が辛くなります。それがAstroを使う理由になります。 -->
+<header class="header">
+  <div class="wrap header__inner">
+    <a href="index.html" class="logo">SHI-</a>
+    <nav class="nav">
+      <a href="darts.html" aria-current="page">DARTS</a>
+      <a href="music.html">MUSIC</a>
+      <a href="games.html">GAMES</a>
+      <a href="log.html">LOG</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ページ見出し：左に文字、右にダーツボード -->
+  <section class="wrap pagehead">
+
+    <div class="pagehead__text">
+      <h1>DARTS</h1>
+      <p>
+        投げた記録とスタッツ。レーティングの推移、01とクリケットのアベレージを残していきます。
+        感覚ではなく数字で見ると、伸びている部分と止まっている部分がはっきりします。
+      </p>
+    </div>
+
+    <div class="board" aria-hidden="true">
+      <div class="board__ring board__ring--1"></div>
+      <div class="board__ring board__ring--2"></div>
+      <div class="board__ring board__ring--3"></div>
+      <div class="board__bull"></div>
+      <!-- 実際のダーツボードと同じ数字の並び順です -->
+      <ul class="board__numbers">
+        <li style="--i:0" data-target><span>20</span></li>
+        <li style="--i:1"><span>1</span></li>
+        <li style="--i:2"><span>18</span></li>
+        <li style="--i:3"><span>4</span></li>
+        <li style="--i:4"><span>13</span></li>
+        <li style="--i:5"><span>6</span></li>
+        <li style="--i:6"><span>10</span></li>
+        <li style="--i:7"><span>15</span></li>
+        <li style="--i:8"><span>2</span></li>
+        <li style="--i:9"><span>17</span></li>
+        <li style="--i:10"><span>3</span></li>
+        <li style="--i:11"><span>19</span></li>
+        <li style="--i:12"><span>7</span></li>
+        <li style="--i:13"><span>16</span></li>
+        <li style="--i:14"><span>8</span></li>
+        <li style="--i:15"><span>11</span></li>
+        <li style="--i:16"><span>14</span></li>
+        <li style="--i:17"><span>9</span></li>
+        <li style="--i:18"><span>12</span></li>
+        <li style="--i:19"><span>5</span></li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- スタッツ。数字は自分のものに書き換えてください -->
+  <section class="wrap section">
+    <p class="section__label">CURRENT STATS</p>
+    <dl class="stats">
+      <div class="stat">
+        <dt>RATING</dt>
+        <dd>—</dd>
+      </div>
+      <div class="stat">
+        <dt>01 AVG</dt>
+        <dd>—</dd>
+      </div>
+      <div class="stat">
+        <dt>CRICKET</dt>
+        <dd>—</dd>
+      </div>
+      <div class="stat">
+        <dt>HAT TRICK</dt>
+        <dd>—</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ここに今後グラフや対戦記録を足していきます -->
+  <section class="wrap section">
+    <p class="section__label">HISTORY</p>
+    <ul class="updates">
+      <li><time datetime="2026-08-06">2026.08.06</time><span>記録をつけはじめました</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">© 2026 SHI-</div>
+</footer>
+
+</body>
+</html>

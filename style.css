@@ -1,0 +1,262 @@
+/* ============================================================
+   しーの個人サイト / スタイルシート
+   ============================================================ */
+
+/* --- 1. デザイントークン ------------------------------------ */
+:root {
+  --ink:    #141110;  /* 背景。茶色寄りの黒＝バーの内装 */
+  --panel:  #1C1817;  /* 少し浮かせたい面 */
+  --line:   #2E2724;  /* 罫線 */
+  --chalk:  #ECE4D8;  /* 文字色 */
+  --muted:  #8C817A;  /* 補助テキスト */
+  --amber:  #E9A13B;  /* アクセント＝電球の色 */
+  --red:    #B23A2F;  /* ダーツボードの赤 */
+
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-jp: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --max: 860px;
+}
+
+/* --- 2. 土台 ------------------------------------------------ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--ink);
+  color: var(--chalk);
+  font-family: var(--font-jp);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+img { display: block; max-width: 100%; }
+
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: 24px; }
+
+/* スクロールでアンカーに飛んだとき、ヘッダーに隠れないように */
+section[id] { scroll-margin-top: 80px; }
+
+/* --- 3. ヘッダー -------------------------------------------- */
+.header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(20,17,16,.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.header__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px; gap: 16px;
+}
+.logo { font-family: var(--font-display); font-size: 19px; letter-spacing: .12em; }
+.logo::before {
+  content: ""; display: inline-block;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--red); margin-right: 9px; vertical-align: 2px;
+}
+.nav { display: flex; gap: 22px; overflow-x: auto; }
+.nav a {
+  font-family: var(--font-display); font-size: 13px;
+  letter-spacing: .14em; color: var(--muted);
+  white-space: nowrap; transition: color .2s;
+}
+.nav a:hover, .nav a:focus-visible { color: var(--amber); }
+
+/* --- 4. ヒーロー -------------------------------------------- */
+.hero { text-align: center; padding-block: 56px 64px; }
+
+.hero__visual {
+  position: relative; display: grid; place-items: center;
+  padding-top: 48px; margin-bottom: 28px;
+}
+/* 天井から降りる光。clip-pathで台形に切り抜いている */
+.beam {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 340px; height: 100%;
+  background: linear-gradient(180deg, rgba(233,161,59,.20), rgba(233,161,59,0) 80%);
+  clip-path: polygon(43% 0%, 57% 0%, 100% 100%, 0% 100%);
+  pointer-events: none;
+}
+.avatar {
+  position: relative;
+  width: 156px; aspect-ratio: 1/1; border-radius: 50%;
+  object-fit: cover; background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 50px rgba(0,0,0,.6);
+}
+
+.hero h1 {
+  font-size: clamp(30px, 6vw, 40px);
+  font-weight: 700; letter-spacing: .04em; margin-bottom: 10px;
+}
+.hero .tagline { color: var(--amber); font-size: 15px; margin-bottom: 18px; }
+.hero .affil {
+  font-size: 13px; color: var(--muted);
+  max-width: 30em; margin-inline: auto; margin-bottom: 24px;
+}
+
+/* SNSの行 */
+.social { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.social a {
+  font-family: var(--font-display); font-size: 12px; letter-spacing: .1em;
+  padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px;
+  color: var(--muted); transition: border-color .2s, color .2s;
+}
+.social a:hover, .social a:focus-visible { border-color: var(--amber); color: var(--amber); }
+
+/* --- 5. セクション見出し ------------------------------------ */
+.section { padding-block: 48px; border-top: 1px solid var(--line); }
+.section__label {
+  font-family: var(--font-display); font-size: 13px;
+  letter-spacing: .3em; color: var(--muted); margin-bottom: 6px;
+}
+.section__note { font-size: 13px; color: var(--muted); margin-bottom: 26px; }
+
+/* --- 6. STATUS（ダーツ盤＋数値） ---------------------------- */
+.status {
+  display: flex; align-items: center; gap: 40px;
+}
+.status__figures { flex: 1; }
+
+.figures {
+  display: grid;
+  grid-template-columns: 1fr;          /* 狭いときは縦1列 */
+  gap: 12px;
+}
+@media (min-width: 520px) {
+  .figures { grid-template-columns: repeat(3, minmax(0, 1fr)); }  /* 入るなら3列 */
+}
+.figure {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 4px; padding: 16px 18px;
+}
+.figure dt {
+  font-family: var(--font-display); font-size: 11px;
+  letter-spacing: .2em; color: var(--muted); margin-bottom: 4px;
+}
+.figure dd {
+  font-family: var(--font-display); font-size: 30px;
+  line-height: 1.1; color: var(--amber);
+}
+.figure dd small { font-size: 13px; color: var(--muted); margin-left: 4px; }
+
+.updated {
+  font-family: var(--font-display); font-size: 11px;
+  letter-spacing: .16em; color: var(--muted); margin-top: 14px;
+}
+
+/* ダーツボード */
+.board { position: relative; width: 220px; aspect-ratio: 1/1; flex-shrink: 0; }
+.board::before {
+  content: ""; position: absolute; inset: -18%;
+  background: radial-gradient(circle, rgba(233,161,59,.14), transparent 65%);
+}
+.board__ring {
+  position: absolute; border-radius: 50%; border: 1px solid var(--line);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+}
+.board__ring--1 { width: 74%; height: 74%; }
+.board__ring--2 { width: 46%; height: 46%; }
+.board__ring--3 { width: 18%; height: 18%; border-color: var(--red); }
+.board__bull {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 8%; aspect-ratio: 1/1; border-radius: 50%; background: var(--red);
+}
+.board__numbers { position: absolute; inset: 0; animation: spin 160s linear infinite; }
+
+/* ★仕組み★ liを18度ずつ回す（360÷20=18）。中のspanは上端中央にあるので円周上を動く */
+.board__numbers li { position: absolute; inset: 0; transform: rotate(calc(var(--i) * 18deg)); }
+.board__numbers span {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-display); font-size: 14px; color: var(--muted);
+}
+.board__numbers li[data-target] span { color: var(--amber); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- 7. カウントダウンなどの小物 ---------------------------- */
+.chips { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.chip {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 4px; padding: 14px 18px;
+  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+}
+.chip span:first-child { font-size: 13px; color: var(--muted); }
+.chip span:last-child {
+  font-family: var(--font-display); font-size: 22px; color: var(--chalk);
+}
+
+/* --- 8. WORKS ----------------------------------------------- */
+.works { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 640px) { .works { grid-template-columns: 1fr 1fr; } }
+
+.work {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 4px; overflow: hidden;
+  transition: border-color .25s, transform .25s;
+}
+.work:hover, .work:focus-visible { border-color: var(--amber); transform: translateY(-3px); }
+.work img { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #000; }
+.work__body { padding: 16px 18px; }
+.work__tag {
+  font-family: var(--font-display); font-size: 11px;
+  letter-spacing: .18em; color: var(--amber); margin-bottom: 4px;
+}
+.work h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.work p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* --- 9. LOG ------------------------------------------------- */
+.posts li {
+  display: flex; gap: 18px; align-items: baseline;
+  padding-block: 12px; border-bottom: 1px solid var(--line); font-size: 14px;
+}
+.posts time {
+  font-family: var(--font-display); color: var(--muted);
+  letter-spacing: .06em; flex-shrink: 0;
+}
+.posts .src {
+  font-family: var(--font-display); font-size: 10px; letter-spacing: .14em;
+  color: var(--amber); border: 1px solid var(--line);
+  padding: 1px 7px; border-radius: 3px; flex-shrink: 0;
+}
+
+/* --- 10. LINKS（相互リンク） -------------------------------- */
+.links { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 640px) { .links { grid-template-columns: 1fr 1fr; } }
+
+.link {
+  display: flex; gap: 12px; align-items: center;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 4px; padding: 12px 14px;
+  transition: border-color .2s;
+}
+.link:hover, .link:focus-visible { border-color: var(--amber); }
+.link img { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0; background: var(--ink); }
+.link b { font-size: 14px; font-weight: 500; display: block; }
+.link small { font-size: 12px; color: var(--muted); }
+
+.empty {
+  border: 1px dashed var(--line); border-radius: 4px;
+  padding: 26px; text-align: center; font-size: 13px; color: var(--muted);
+}
+
+/* --- 11. フッター ------------------------------------------- */
+.footer {
+  border-top: 1px solid var(--line); padding-block: 28px;
+  font-family: var(--font-display); font-size: 12px;
+  letter-spacing: .1em; color: var(--muted);
+}
+
+/* --- 12. スマホ対応 ----------------------------------------- */
+@media (max-width: 720px) {
+  .status { flex-direction: column-reverse; gap: 28px; }
+  .board { width: 180px; }
+  .chips { grid-template-columns: 1fr 1fr; }
+  .avatar { width: 130px; }
+  .beam { width: 260px; }
+  .nav { gap: 16px; }
+  .nav a { font-size: 11px; }
+}
+
+/* アニメーションが苦手な人の設定を尊重する */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

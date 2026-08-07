@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C's_page</title>
+<meta name="description" content="ダーツ、音ゲー、器楽・軽音・シンセデザイン。ときどきコードを書きます。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="wrap header__inner">
+    <a href="#top" class="logo">C's_page</a>
+    <nav class="nav">
+      <a href="#status">STATUS</a>
+      <a href="#works">WORKS</a>
+      <a href="#log">LOG</a>
+      <a href="#links">LINKS</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ ヒーロー ============ -->
+  <section class="wrap hero">
+    <div class="hero__visual">
+      <div class="beam" aria-hidden="true"></div>
+      <img class="avatar" src="img/icon.jpg" alt="しーのアイコン">
+    </div>
+
+    <h1>しー</h1>
+    <p class="tagline">ダーツ/ドラム/リズムゲーム</p>
+    <p class="affil">
+      器楽部 / 軽音楽部 / シンセデザイン研究部<br>
+      基本情報技術者試験とAtCoderに向けて精進中
+    </p>
+
+    <div class="social">
+      <a href="#">X</a>
+      <a href="#">GITHUB</a>
+      <a href="#">YOUTUBE</a>
+      <a href="#">ATCODER</a>
+    </div>
+  </section>
+
+  <!-- ============ STATUS ============ -->
+  <section class="wrap section" id="status">
+    <p class="section__label">STATUS</p>
+    <p class="section__note">DARTSLIVE3 のスタッツ。</p>
+
+    <div class="status">
+      <div class="status__figures">
+        <dl class="figures">
+          <div class="figure">
+            <dt>RATING</dt>
+            <dd><span id="dl-rating">—</span><small id="dl-flight"></small></dd>
+          </div>
+          <div class="figure">
+            <dt>01 GAMES</dt>
+            <dd id="dl-stats01">—</dd>
+          </div>
+          <div class="figure">
+            <dt>CRICKET</dt>
+            <dd id="dl-cricket">—</dd>
+          </div>
+        </dl>
+        <p class="updated" id="dl-updated">LOADING...</p>
+      </div>
+
+      <!-- ダーツボード。数字の並びは実物と同じ順です -->
+      <div class="board" aria-hidden="true">
+        <div class="board__ring board__ring--1"></div>
+        <div class="board__ring board__ring--2"></div>
+        <div class="board__ring board__ring--3"></div>
+        <div class="board__bull"></div>
+        <ul class="board__numbers">
+          <li style="--i:0" data-target><span>20</span></li>
+          <li style="--i:1"><span>1</span></li>
+          <li style="--i:2"><span>18</span></li>
+          <li style="--i:3"><span>4</span></li>
+          <li style="--i:4"><span>13</span></li>
+          <li style="--i:5"><span>6</span></li>
+          <li style="--i:6"><span>10</span></li>
+          <li style="--i:7"><span>15</span></li>
+          <li style="--i:8"><span>2</span></li>
+          <li style="--i:9"><span>17</span></li>
+          <li style="--i:10"><span>3</span></li>
+          <li style="--i:11"><span>19</span></li>
+          <li style="--i:12"><span>7</span></li>
+          <li style="--i:13"><span>16</span></li>
+          <li style="--i:14"><span>8</span></li>
+          <li style="--i:15"><span>11</span></li>
+          <li style="--i:16"><span>14</span></li>
+          <li style="--i:17"><span>9</span></li>
+          <li style="--i:18"><span>12</span></li>
+          <li style="--i:19"><span>5</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- カウントダウン。日付は自分の予定に書き換えてください -->
+     <br>
+     <br>
+     <p class="section__note">イベントまでのカウントダウン</p>
+    <div class="chips">
+      <div class="chip">
+        <span>まで</span>
+        <span data-deadline="2026-10-12">—</span>
+      </div>
+      <div class="chip">
+        <span>調布祭まで</span>
+        <span data-deadline="2026-11-20">—</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORKS ============ -->
+  <section class="wrap section" id="works">
+    <p class="section__label">WORKS</p>
+    <p class="section__note">演奏したもの、作った音、書いたコード。</p>
+
+    <div class="works">
+
+      <a class="work" href="#">
+        <!-- YouTubeのサムネイルは決まったURLで取れます。
+             https://img.youtube.com/vi/【動画ID】/maxresdefault.jpg -->
+        <img src="https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg" alt="">
+        <div class="work__body">
+          <p class="work__tag">SYNTH / LIVE</p>
+          <h3>学園祭ライブ アーカイブ</h3>
+          <p>シンセデザイン研究部として出演した回の映像。使ったパッチと音作りの意図はこちらに。</p>
+        </div>
+      </a>
+
+      <a class="work" href="#">
+        <img src="https://img.youtube.com/vi/VIDEO_ID2/maxresdefault.jpg" alt="">
+        <div class="work__body">
+          <p class="work__tag">BAND</p>
+          <h3>軽音楽部 ライブ</h3>
+          <p>演奏したセットリストと、当日のセッティングについて。</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ LOG ============ -->
+  <section class="wrap section" id="log">
+    <p class="section__label">LOG</p>
+    <p class="section__note">精進の記録と、このサイトを作っている過程。</p>
+
+    <ul class="posts">
+      <li>
+        <time datetime="2026-08-07">2026.08.07</time>
+        <span class="src">LOCAL</span>
+        <span>個人サイトを作りはじめました</span>
+      </li>
+      <li>
+        <time datetime="2026-08-05">2026.08.05</time>
+        <span class="src">LOCAL</span>
+        <span>APG4b、3章まで進みました</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ LINKS ============ -->
+  <section class="wrap section" id="links">
+    <p class="section__label">LINKS</p>
+    <p class="section__note">相互リンク募集中です。Xまでお気軽にどうぞ。</p>
+
+    <div class="links">
+      <!-- リンクが増えたらこの形でコピーして足していきます
+      <a class="link" href="https://example.com">
+        <img src="" alt="">
+        <span><b>サイト名</b><small>ひとこと</small></span>
+      </a>
+      -->
+    </div>
+
+    <p class="empty">まだリンクがありません。第一号お待ちしています。</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">© 2026 SHI-</div>
+</footer>
+
+<!-- JSは body の一番下で読み込む。HTMLが揃ってから動かすため -->
+<script src="script.js"></script>
+</body>
+</html>
