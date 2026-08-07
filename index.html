@@ -43,10 +43,10 @@
     </p>
 
     <div class="social">
-      <a href="#">X</a>
-      <a href="#">GITHUB</a>
-      <a href="#">YOUTUBE</a>
-      <a href="#">ATCODER</a>
+      <a href="https://x.com/c_chaaan">X</a>
+      <a href="https://github.com/koki-uec">GITHUB</a>
+      <a href="https://www.instagram.com/t.lvb2o">INSTAGRAM</a>
+      <a href="https://atcoder.jp/users/C_nbmn">ATCODER</a>
     </div>
   </section>
 
@@ -74,34 +74,50 @@
         <p class="updated" id="dl-updated">LOADING...</p>
       </div>
 
-      <!-- ダーツボード。数字の並びは実物と同じ順です -->
+      <!-- ダーツボード。数字の並びは実物と同じ順です。
+           クリック／タップすると、その場所の得点が一瞬出ます（script.js の setupBoard） -->
       <div class="board" aria-hidden="true">
-        <div class="board__ring board__ring--1"></div>
-        <div class="board__ring board__ring--2"></div>
-        <div class="board__ring board__ring--3"></div>
-        <div class="board__bull"></div>
-        <ul class="board__numbers">
-          <li style="--i:0" data-target><span>20</span></li>
-          <li style="--i:1"><span>1</span></li>
-          <li style="--i:2"><span>18</span></li>
-          <li style="--i:3"><span>4</span></li>
-          <li style="--i:4"><span>13</span></li>
-          <li style="--i:5"><span>6</span></li>
-          <li style="--i:6"><span>10</span></li>
-          <li style="--i:7"><span>15</span></li>
-          <li style="--i:8"><span>2</span></li>
-          <li style="--i:9"><span>17</span></li>
-          <li style="--i:10"><span>3</span></li>
-          <li style="--i:11"><span>19</span></li>
-          <li style="--i:12"><span>7</span></li>
-          <li style="--i:13"><span>16</span></li>
-          <li style="--i:14"><span>8</span></li>
-          <li style="--i:15"><span>11</span></li>
-          <li style="--i:16"><span>14</span></li>
-          <li style="--i:17"><span>9</span></li>
-          <li style="--i:18"><span>12</span></li>
-          <li style="--i:19"><span>5</span></li>
-        </ul>
+
+        <!-- ここから中身が丸ごと回る。見た目と当たり判定をズラさないため -->
+        <div class="board__spin">
+
+          <!-- 得点が入る円。JSはこの円のサイズを測って判定する -->
+          <div class="board__play">
+            <div class="board__face"></div>
+            <div class="board__band board__band--triple"></div>
+            <div class="board__band board__band--double"></div>
+            <div class="board__bull-out"></div>
+            <div class="board__bull"></div>
+          </div>
+
+          <!-- 数字は得点エリアの外側に並ぶ -->
+          <ul class="board__numbers">
+            <li style="--i:0" data-target><span>20</span></li>
+            <li style="--i:1"><span>1</span></li>
+            <li style="--i:2"><span>18</span></li>
+            <li style="--i:3"><span>4</span></li>
+            <li style="--i:4"><span>13</span></li>
+            <li style="--i:5"><span>6</span></li>
+            <li style="--i:6"><span>10</span></li>
+            <li style="--i:7"><span>15</span></li>
+            <li style="--i:8"><span>2</span></li>
+            <li style="--i:9"><span>17</span></li>
+            <li style="--i:10"><span>3</span></li>
+            <li style="--i:11"><span>19</span></li>
+            <li style="--i:12"><span>7</span></li>
+            <li style="--i:13"><span>16</span></li>
+            <li style="--i:14"><span>8</span></li>
+            <li style="--i:15"><span>11</span></li>
+            <li style="--i:16"><span>14</span></li>
+            <li style="--i:17"><span>9</span></li>
+            <li style="--i:18"><span>12</span></li>
+            <li style="--i:19"><span>5</span></li>
+          </ul>
+
+        </div>
+
+        <!-- 得点の表示。回らないので board__spin の外に置く -->
+        <p class="board__score"></p>
       </div>
     </div>
 
@@ -111,8 +127,8 @@
      <p class="section__note">イベントまでのカウントダウン</p>
     <div class="chips">
       <div class="chip">
-        <span>まで</span>
-        <span data-deadline="2026-10-12">—</span>
+        <span>軽音夏合宿まで</span>
+        <span data-deadline="2026-09-04">—</span>
       </div>
       <div class="chip">
         <span>調布祭まで</span>
@@ -124,7 +140,7 @@
   <!-- ============ WORKS ============ -->
   <section class="wrap section" id="works">
     <p class="section__label">WORKS</p>
-    <p class="section__note">演奏したもの、作った音、書いたコード。</p>
+    <p class="section__note">随時演奏動画を載せる予定</p>
 
     <div class="works">
 
@@ -134,8 +150,8 @@
         <img src="https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg" alt="">
         <div class="work__body">
           <p class="work__tag">SYNTH / LIVE</p>
-          <h3>学園祭ライブ アーカイブ</h3>
-          <p>シンセデザイン研究部として出演した回の映像。使ったパッチと音作りの意図はこちらに。</p>
+          <h3>工事中</h3>
+          <p>Coming soon</p>
         </div>
       </a>
 
@@ -143,8 +159,8 @@
         <img src="https://img.youtube.com/vi/VIDEO_ID2/maxresdefault.jpg" alt="">
         <div class="work__body">
           <p class="work__tag">BAND</p>
-          <h3>軽音楽部 ライブ</h3>
-          <p>演奏したセットリストと、当日のセッティングについて。</p>
+          <h3>工事中</h3>
+          <p>Coming soon</p>
         </div>
       </a>
 
@@ -154,18 +170,18 @@
   <!-- ============ LOG ============ -->
   <section class="wrap section" id="log">
     <p class="section__label">LOG</p>
-    <p class="section__note">精進の記録と、このサイトを作っている過程。</p>
+    <p class="section__note">精進の記録など</p>
 
     <ul class="posts">
       <li>
-        <time datetime="2026-08-07">2026.08.07</time>
+        <time datetime="2026-08-08">2026.08.08</time>
         <span class="src">LOCAL</span>
-        <span>個人サイトを作りはじめました</span>
+        <span>個人サイト作成開始</span>
       </li>
       <li>
-        <time datetime="2026-08-05">2026.08.05</time>
-        <span class="src">LOCAL</span>
-        <span>APG4b、3章まで進みました</span>
+        <time datetime="2026-08-06">2026.08.06</time>
+        <span class="src src--darts">DARTS</span>
+        <span>ダーツライブRATING4達成</span>
       </li>
     </ul>
   </section>
@@ -190,7 +206,7 @@
 </main>
 
 <footer class="footer">
-  <div class="wrap">© 2026 SHI-</div>
+  <div class="wrap">© 2026 C</div>
 </footer>
 
 <!-- JSは body の一番下で読み込む。HTMLが揃ってから動かすため -->
