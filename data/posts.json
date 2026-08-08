@@ -1,0 +1,25 @@
+{
+  "note": "上が新しい順です。1件足すには { } のかたまりをコピーして、カンマ区切りで並べる。src は LOCAL / DARTS / MUSIC / CODE（増やしたい場合は style.css に .src--〇〇 を足す）。",
+  "posts": [
+    {
+      "date": "2026-08-08",
+      "src": "LOCAL",
+      "text": "個人サイト作成開始"
+    },
+    {
+      "date": "2026-08-06",
+      "src": "DARTS",
+      "text": "ダーツライブRATING4達成・初HAT TRICK"
+    },
+    {
+      "date": "2026-08-05",
+      "src": "DARTS",
+      "text": "初THREE IN A BED"
+    },
+    {
+      "date": "2026-05-10",
+      "src": "DARTS",
+      "text": "ダーツにはまる"
+    }
+  ]
+}

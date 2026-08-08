@@ -10,6 +10,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
+<!-- ★JSが動く環境かどうかの印を、描画より先に付ける★
+     スクロール演出は要素をいったん透明にするので、この印が無いと
+     JSの読み込みに失敗したとき中身が透明のまま消えてしまいます。
+     CSS側は「.js が付いているときだけ隠す」と書いてあります。 -->
+<script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body>
@@ -18,6 +24,7 @@
   <div class="wrap header__inner">
     <a href="#top" class="logo">C's_page</a>
     <nav class="nav">
+      <a href="#about">ABOUT</a>
       <a href="#status">STATUS</a>
       <a href="#works">WORKS</a>
       <a href="#log">LOG</a>
@@ -36,43 +43,88 @@
     </div>
 
     <h1>しー</h1>
-    <p class="tagline">ダーツ/ドラム/リズムゲーム</p>
+    <p class="tagline">電気通信大学Ⅰ類 1年</p>
     <p class="affil">
-      器楽部 / 軽音楽部 / シンセデザイン研究部<br>
-      基本情報技術者試験とAtCoderに向けて精進中
     </p>
 
     <div class="social">
       <a href="https://x.com/c_chaaan">X</a>
       <a href="https://github.com/koki-uec">GITHUB</a>
       <a href="https://www.instagram.com/t.lvb2o">INSTAGRAM</a>
-      <a href="https://atcoder.jp/users/C_nbmn">ATCODER</a>
+      <a href="https://link.studyplus.jp/DWPWYwQ7">STUDYPLUS</a>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <!-- ★ class="ph" が付いているところが書き換え待ちです。
+       文章を入れたら class="ph" ごと消してください（オレンジの破線が消えます） -->
+  <section class="wrap section" id="about">
+    <div class="section__head">
+      <p class="section__label">ABOUT</p>
+      <p class="section__note">自己紹介・使っている道具</p>
+    </div>
+
+    <p class="about__lead reveal">
+      はじめまして、しーです。<br>
+      ゲー障がダーツにはまってダー障になりました。
+      軽音系の部活でドラムを叩いてます。
+      最近は基本情報技術者試験とAtCoderに向けて精進中です。
+    </p>
+
+    <dl class="profile reveal">
+      <div><dt>NAME</dt>  <dd>しー</dd></div>
+      <div><dt>CLUB</dt>  <dd>器楽部・軽音楽部・シンセデザイン研究部</dd></div>
+      <div><dt>GAMES</dt> <dd><span>太鼓の達人・OVERWATCH</span></dd></div>
+      <div><dt>NOW</dt>   <dd>基本情報技術者試験 / AtCoder</dd></div>
+    </dl>
+
+    <p class="section__sub">MY GEAR</p>
+    <div class="gear">
+      <div class="gear__item reveal">
+        <p class="gear__tag">DARTS</p>
+        <h3>フライト・シャフト / TARGET K-FLEX シェイプ インターミディエイト</h3>
+        <h3>バレル・チップ / WayArrival 12本セット</h3>
+        <img src="img/51IlzKjGzrL._AC_SX679_.jpg" alt="TARGET K-FLEX シェイプ インターミディエイト の写真">
+        <img src="img/shopping.jpg" alt="WayArrival 12本セット の写真">
+      </div>
+      <div class="gear__item reveal">
+        <p class="gear__tag">DRUMS</p>
+        <h3>スティック / PEARL 7ABC ドラムスティック オーク ブラックラッカー</h3>
+        <img src="img/pearl_7abc.jpg" alt=" Pearl 7ABC の写真">
+      </div>
     </div>
   </section>
 
   <!-- ============ STATUS ============ -->
-  <section class="wrap section" id="status">
-    <p class="section__label">STATUS</p>
-    <p class="section__note">DARTSLIVE3 のスタッツ。</p>
+  <!-- section--wide ＝ 見出しを左の柱に置く段組みから外す。
+       ダーツ盤で左右が既に埋まっているセクション用 -->
+  <section class="wrap section section--wide" id="status">
+    <div class="section__head">
+      <p class="section__label">STATUS</p>
+      <p class="section__note">DARTSLIVE3 のスタッツ</p>
+    </div>
 
     <div class="status">
       <div class="status__figures">
         <dl class="figures">
-          <div class="figure">
+          <div class="figure reveal">
             <dt>RATING</dt>
             <dd><span id="dl-rating">—</span><small id="dl-flight"></small></dd>
           </div>
-          <div class="figure">
+          <div class="figure reveal">
             <dt>01 GAMES</dt>
             <dd id="dl-stats01">—</dd>
           </div>
-          <div class="figure">
+          <div class="figure reveal">
             <dt>CRICKET</dt>
             <dd id="dl-cricket">—</dd>
           </div>
         </dl>
         <p class="updated" id="dl-updated">LOADING...</p>
       </div>
+
+      <!-- ダーツボードと、1ラウンド（3投）の記録 -->
+      <div class="status__board">
 
       <!-- ダーツボード。数字の並びは実物と同じ順です。
            クリック／タップすると、その場所の得点が一瞬出ます（script.js の setupBoard） -->
@@ -116,8 +168,26 @@
 
         </div>
 
+        <!-- アワードが出たときに盤全体が光る層。
+             得点の文字より前に置いて、文字が光に埋もれないようにする -->
+        <div class="board__flash"></div>
+
         <!-- 得点の表示。回らないので board__spin の外に置く -->
         <p class="board__score"></p>
+      </div>
+
+        <!-- 3投で1ラウンド。3投目でアワードを判定します -->
+        <!-- 中身は空。投げるまで何も出さず、細い線だけが残る -->
+        <div class="round">
+          <ul class="round__darts">
+            <li class="round__dart"></li>
+            <li class="round__dart"></li>
+            <li class="round__dart"></li>
+          </ul>
+          <p class="round__sum" id="round-total"></p>
+          <p class="round__award" id="round-award"></p>
+        </div>
+
       </div>
     </div>
 
@@ -126,11 +196,11 @@
      <br>
      <p class="section__note">イベントまでのカウントダウン</p>
     <div class="chips">
-      <div class="chip">
+      <div class="chip reveal">
         <span>軽音夏合宿まで</span>
         <span data-deadline="2026-09-04">—</span>
       </div>
-      <div class="chip">
+      <div class="chip reveal">
         <span>調布祭まで</span>
         <span data-deadline="2026-11-20">—</span>
       </div>
@@ -139,12 +209,14 @@
 
   <!-- ============ WORKS ============ -->
   <section class="wrap section" id="works">
-    <p class="section__label">WORKS</p>
-    <p class="section__note">随時演奏動画を載せる予定</p>
+    <div class="section__head">
+      <p class="section__label">WORKS</p>
+      <p class="section__note">随時演奏動画を載せる予定</p>
+    </div>
 
     <div class="works">
 
-      <a class="work" href="#">
+      <a class="work reveal" href="#">
         <!-- YouTubeのサムネイルは決まったURLで取れます。
              https://img.youtube.com/vi/【動画ID】/maxresdefault.jpg -->
         <img src="https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg" alt="">
@@ -155,41 +227,27 @@
         </div>
       </a>
 
-      <a class="work" href="#">
-        <img src="https://img.youtube.com/vi/VIDEO_ID2/maxresdefault.jpg" alt="">
-        <div class="work__body">
-          <p class="work__tag">BAND</p>
-          <h3>工事中</h3>
-          <p>Coming soon</p>
-        </div>
-      </a>
-
     </div>
   </section>
 
   <!-- ============ LOG ============ -->
   <section class="wrap section" id="log">
-    <p class="section__label">LOG</p>
-    <p class="section__note">精進の記録など</p>
+    <div class="section__head">
+      <p class="section__label">LOG</p>
+      <p class="section__note">精進の記録など</p>
+    </div>
 
-    <ul class="posts">
-      <li>
-        <time datetime="2026-08-08">2026.08.08</time>
-        <span class="src">LOCAL</span>
-        <span>個人サイト作成開始</span>
-      </li>
-      <li>
-        <time datetime="2026-08-06">2026.08.06</time>
-        <span class="src src--darts">DARTS</span>
-        <span>ダーツライブRATING4達成</span>
-      </li>
-    </ul>
+    <!-- 中身は script.js の loadPosts() が data/posts.json から作ります -->
+    <ul class="posts" id="posts"></ul>
+    <p class="empty" id="posts-empty" hidden>記録を読み込めませんでした。</p>
   </section>
 
   <!-- ============ LINKS ============ -->
   <section class="wrap section" id="links">
-    <p class="section__label">LINKS</p>
-    <p class="section__note">相互リンク募集中です。Xまでお気軽にどうぞ。</p>
+    <div class="section__head">
+      <p class="section__label">LINKS</p>
+      <p class="section__note">相互リンク募集中です</p>
+    </div>
 
     <div class="links">
       <!-- リンクが増えたらこの形でコピーして足していきます
@@ -200,13 +258,17 @@
       -->
     </div>
 
-    <p class="empty">まだリンクがありません。第一号お待ちしています。</p>
+    <p class="empty reveal">まだリンクがありません</p>
   </section>
 
 </main>
 
 <footer class="footer">
-  <div class="wrap">© 2026 C</div>
+  <div class="wrap footer__inner">
+    <span>© 2026 C</span>
+    <!-- posts.json の一番新しい日付が入ります -->
+    <span id="last-updated"></span>
+  </div>
 </footer>
 
 <!-- JSは body の一番下で読み込む。HTMLが揃ってから動かすため -->
