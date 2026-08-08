@@ -54,7 +54,16 @@ section[id] { scroll-margin-top: 80px; }
   display: flex; align-items: center; justify-content: space-between;
   height: 60px; gap: 16px;
 }
-.logo { font-family: var(--font-display); font-size: 19px; letter-spacing: .12em; }
+.logo {
+  font-family: var(--font-display); font-size: 19px; letter-spacing: .12em;
+  /* ★サイト名を折り返させない★
+     flexの中身は既定で縮みます。ロゴは「赤い点＋文字」でできていて、
+     その境目で改行できてしまうため、狭い画面だと点だけ1行目に残って
+     文字が2行目に落ち、ヘッダーの高さ(60px)からはみ出していました。
+     縮まない・折り返さない、の2重で止めます。 */
+  flex-shrink: 0;
+  white-space: nowrap;
+}
 .logo::before {
   content: ""; display: inline-block;
   width: 7px; height: 7px; border-radius: 50%;
@@ -601,6 +610,16 @@ section[id] { scroll-margin-top: 80px; }
   .nav { gap: 13px; }
   .nav a { font-size: 11px; }
   .profile dt { width: 5.4em; }
+}
+
+/* --- 12-. 特に狭い画面（iPhone SE / 多くのAndroid） ----------
+   ロゴを縮めない代わりに、余白と文字を詰めて横幅を稼ぐ。 */
+@media (max-width: 400px) {
+  .wrap { padding-inline: 16px; }   /* 端の余白を24→16pxに */
+  .logo { font-size: 17px; }
+  .logo::before { margin-right: 7px; }
+  .nav { gap: 11px; }
+  .nav a { font-size: 10px; letter-spacing: .08em; }
 }
 
 /* --- 12a. 広い画面：見出しを左の柱に立てる ------------------
