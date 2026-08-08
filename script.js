@@ -15,7 +15,11 @@
 ------------------------------------------------------------ */
 async function loadDarts() {
   try {
-    const res = await fetch('data/darts.json');   // ファイルを取りに行く
+    // ★cache: 'no-cache' ★
+    //   スタッツを更新しても、10分間は古い数字が出てしまうのを防ぐ。
+    //   「毎回サーバーに確認する。変わっていなければ再ダウンロードしない」設定なので、
+    //   常に最新でありながら通信量はほとんど増えません。
+    const res = await fetch('data/darts.json', { cache: 'no-cache' });
     const data = await res.json();                // JSONを JavaScript の形に変換
 
     // id が一致する要素を探して、中身を書き換える
@@ -291,7 +295,7 @@ async function loadPosts() {
   if (!list) return;
 
   try {
-    const res  = await fetch('data/posts.json');
+    const res  = await fetch('data/posts.json', { cache: 'no-cache' });  // 記録を足したらすぐ反映されるように
     const data = await res.json();
     const posts = data.posts || [];
 

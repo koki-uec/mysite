@@ -9,7 +9,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<!-- ★?v= の数字はキャッシュ対策★
+     GitHub Pages は10分間ブラウザにファイルを保持させるため、
+     更新直後は「新しいHTML＋古いCSS」になって表示が崩れます。
+     見た目を変えたら、この数字を1つ増やしてコミットしてください。
+     URLが変わる＝別ファイル扱いになるので、必ず新しいものが読まれます。 -->
+<link rel="stylesheet" href="style.css?v=1">
 
 <!-- ★JSが動く環境かどうかの印を、描画より先に付ける★
      スクロール演出は要素をいったん透明にするので、この印が無いと
@@ -272,6 +277,7 @@
 </footer>
 
 <!-- JSは body の一番下で読み込む。HTMLが揃ってから動かすため -->
-<script src="script.js"></script>
+<!-- こちらも同じ。JSを直したら ?v= の数字を増やす -->
+<script src="script.js?v=1"></script>
 </body>
 </html>
